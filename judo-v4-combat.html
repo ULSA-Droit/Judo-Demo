@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JUDO CLUB · COARRAZE-NAY · COMBAT</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--black:#050505;--dark:#0f0f0f;--red:#c0392b;--red2:#e74c3c;--white:#f0f0f0;--muted:#6a6a6a;--border:rgba(192,57,43,0.2);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:68px;background:rgba(5,5,5,0.97);backdrop-filter:blur(8px);border-bottom:2px solid var(--red);}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:4px;color:var(--white);text-decoration:none;}
+.nav-logo span{color:var(--red);}
+.nav-links{display:flex;list-style:none;}
+.nav-links a{display:block;padding:0 16px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-decoration:none;line-height:68px;transition:color .2s;}
+.nav-links a:hover{color:var(--red);}
+.nav-cta{background:var(--red);color:var(--white);padding:9px 24px;border:none;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.nav-cta:hover{background:var(--red2);}
+
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1200&q=85')center/cover;filter:brightness(0.25) contrast(1.2);}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(192,57,43,0.15),transparent 50%),linear-gradient(to top,var(--black) 0%,transparent 40%);}
+.hero-content{position:relative;z-index:1;padding:120px 64px 80px;max-width:900px;}
+.hero-label{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:6px;text-transform:uppercase;color:var(--red);margin-bottom:20px;display:flex;align-items:center;gap:14px;}
+.hero-label::before{content:'';width:40px;height:2px;background:var(--red);}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,12vw,14rem);line-height:0.85;letter-spacing:2px;margin-bottom:16px;color:var(--white);}
+.hero-title .accent{color:var(--red);display:block;}
+.hero-sub{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:400;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:36px;}
+.hero-desc{font-size:15px;color:rgba(240,240,240,0.5);line-height:1.9;max-width:500px;margin-bottom:48px;}
+.hero-btns{display:flex;gap:14px;}
+.btn-red{background:var(--red);color:var(--white);padding:16px 40px;border:none;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.btn-red:hover{background:var(--red2);}
+.btn-outline{background:none;color:var(--white);padding:16px 40px;border:1px solid rgba(240,240,240,0.2);font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:border-color .2s;}
+.btn-outline:hover{border-color:var(--red);color:var(--red);}
+.hero-bottom{position:absolute;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);z-index:1;}
+.hero-stat{padding:24px 32px;border-right:1px solid var(--border);}
+.hero-stat:last-child{border-right:none;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--red);line-height:1;}
+.stat-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+
+.disciplines{padding:100px 48px;}
+.s-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:6px;text-transform:uppercase;color:var(--red);margin-bottom:14px;display:flex;align-items:center;gap:14px;}
+.s-label::before{content:'';width:32px;height:2px;background:var(--red);}
+.s-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,7rem);line-height:0.9;color:var(--white);margin-bottom:64px;}
+.s-title .red{color:var(--red);}
+.disc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.disc{background:var(--dark);border:1px solid rgba(255,255,255,0.04);padding:48px 36px;position:relative;overflow:hidden;cursor:pointer;transition:background .3s;}
+.disc:hover{background:#141414;}
+.disc::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--red);transition:height .4s;}
+.disc:hover::before{height:100%;}
+.disc-num{font-family:'Bebas Neue',sans-serif;font-size:5rem;color:rgba(192,57,43,0.07);position:absolute;top:20px;right:24px;line-height:1;}
+.disc-name{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;letter-spacing:2px;color:var(--white);margin-bottom:6px;}
+.disc-jp{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+.disc-desc{font-size:13px;color:var(--muted);line-height:1.8;}
+.disc-tag{display:inline-block;background:var(--border);color:var(--red);font-size:10px;font-weight:600;padding:3px 10px;text-transform:uppercase;letter-spacing:1px;margin-top:14px;}
+
+.tatami{padding:80px 48px;background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.tatami-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.tatami-img{height:480px;background:url('https://images.unsplash.com/photo-1590874315270-5c5f12e95f8a?w=800&q=80')center/cover;position:relative;}
+.tatami-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(5,5,5,0.3),transparent);}
+.tatami-content .s-title{margin-bottom:20px;}
+.tatami-desc{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:36px;}
+.tatami-facts{list-style:none;display:flex;flex-direction:column;gap:14px;}
+.fact{display:flex;gap:14px;font-size:14px;color:rgba(240,240,240,0.6);}
+.fact::before{content:'▶';color:var(--red);font-size:8px;margin-top:5px;flex-shrink:0;}
+
+.contact{padding:80px 48px;display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+.contact h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,5vw,6rem);line-height:0.9;color:var(--white);margin-bottom:20px;}
+.contact h2 .red{color:var(--red);}
+.contact-desc{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:28px;}
+.contact-infos{display:flex;flex-direction:column;gap:14px;}
+.c-item{display:flex;gap:14px;font-size:14px;color:rgba(240,240,240,0.6);padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.05);}
+.c-item:last-child{border-bottom:none;}
+.form-g{margin-bottom:16px;}
+.form-g label{display:block;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.form-g input,.form-g select,.form-g textarea{width:100%;background:var(--dark);border:none;border-bottom:1px solid var(--border);color:var(--white);padding:12px 0;font-family:'Barlow',sans-serif;font-size:14px;outline:none;transition:border-color .2s;}
+.form-g input:focus,.form-g textarea:focus{border-color:var(--red);}
+.form-g textarea{min-height:80px;resize:none;}
+.form-g select option{background:var(--dark);}
+.btn-sub{width:100%;background:var(--red);color:var(--white);border:none;padding:16px;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.btn-sub:hover{background:var(--red2);}
+
+footer{background:var(--black);border-top:2px solid var(--red);padding:36px 48px;display:flex;justify-content:space-between;align-items:center;}
+.f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:4px;color:var(--white);}
+.f-logo span{color:var(--red);}
+.f-copy{font-size:11px;color:var(--muted);letter-spacing:2px;}
+.f-myrkr{font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:1px;}
+.f-myrkr span{color:var(--red);}
+
+@media(max-width:900px){nav{padding:0 20px;}.nav-links{display:none;}.hero-content{padding:100px 24px 100px;}.hero-bottom{grid-template-columns:1fr 1fr;}.disciplines,.tatami,.contact{padding:60px 24px;}.disc-grid{grid-template-columns:1fr;}.tatami-inner,.contact{grid-template-columns:1fr;}.tatami-img{height:280px;}footer{padding:24px;flex-direction:column;gap:12px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="#">JUDO CLUB <span>COARRAZE-NAY</span></a>
+  <ul class="nav-links">
+    <li><a href="#disciplines">Disciplines</a></li>
+    <li><a href="#tatami">Le tatami</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta">Rejoindre</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-label">Coarraze-Nay · 64 · Depuis 1972</div>
+    <h1 class="hero-title">JUDO<br><span class="accent">JU-JITSU</span></h1>
+    <p class="hero-sub">Arts martiaux · Combat · Dépassement</p>
+    <p class="hero-desc">Sur le tatami, chaque chute est un apprentissage. Chaque prise est une leçon. Chaque combat forge le caractère. Bienvenue au Judo Club Coarraze-Nay.</p>
+    <div class="hero-btns">
+      <button class="btn-red">Entrer sur le tatami</button>
+      <button class="btn-outline">Découvrir le club</button>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-stat"><div class="stat-num">50+</div><div class="stat-label">Ans de combat</div></div>
+    <div class="hero-stat"><div class="stat-num">200+</div><div class="stat-label">Judokas</div></div>
+    <div class="hero-stat"><div class="stat-num">3</div><div class="stat-label">Disciplines</div></div>
+    <div class="hero-stat"><div class="stat-num">4+</div><div class="stat-label">Ceintures noires</div></div>
+  </div>
+</section>
+
+<section class="disciplines" id="disciplines">
+  <p class="s-label">Ce qu'on pratique</p>
+  <h2 class="s-title">NOS<br><span class="red">DISCIPLINES</span></h2>
+  <div class="disc-grid">
+    <div class="disc"><div class="disc-num">01</div><div class="disc-name">JUDO</div><div class="disc-jp">柔道</div><div class="disc-desc">Art martial olympique. Projection, immobilisation, soumission. La voie de la souplesse qui défait la force brute.</div><span class="disc-tag">Dès 4 ans</span></div>
+    <div class="disc"><div class="disc-num">02</div><div class="disc-name">JU-JITSU</div><div class="disc-jp">柔術</div><div class="disc-desc">L'art originel. Clés articulaires, projections, étranglements. Technique pure, sans limite de règlement sportif.</div><span class="disc-tag">Adultes</span></div>
+    <div class="disc"><div class="disc-num">03</div><div class="disc-name">SELF-DÉFENSE</div><div class="disc-jp">護身術</div><div class="disc-desc">Applications réelles. Déséquilibres, contrôles, neutralisations. Ce qui fonctionne vraiment quand ça compte.</div><span class="disc-tag">Tous niveaux</span></div>
+  </div>
+</section>
+
+<section class="tatami" id="tatami">
+  <div class="tatami-inner">
+    <div class="tatami-img"></div>
+    <div class="tatami-content">
+      <p class="s-label">Le dojo</p>
+      <h2 class="s-title">LE<br><span class="red">TATAMI</span></h2>
+      <p class="tatami-desc">Notre dojo est un lieu de travail. Pas de posture, pas de spectacle. Juste la technique, la sueur et le respect mutuel entre pratiquants.</p>
+      <ul class="tatami-facts">
+        <li class="fact">Tatami homologué FFJDA</li>
+        <li class="fact">Entraînement compétition toutes catégories</li>
+        <li class="fact">Cours du soir — Lun / Mer / Ven 18h-21h</li>
+        <li class="fact">Stage intensif pendant les vacances scolaires</li>
+        <li class="fact">Club affilié Fédération Française de Judo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div>
+    <h2>ENTRER<br>SUR LE<br><span class="red">TATAMI</span></h2>
+    <p class="contact-desc">Premier cours gratuit. Venez avec une tenue de sport. On s'occupe du reste.</p>
+    <div class="contact-infos">
+      <div class="c-item">📍 Dojo municipal — Coarraze 64800</div>
+      <div class="c-item">📞 05 59 XX XX XX</div>
+      <div class="c-item">⏰ Lun / Mer / Ven · 18h – 21h</div>
+    </div>
+  </div>
+  <div>
+    <div class="form-g"><label>Nom</label><input type="text" placeholder="Prénom Nom"></div>
+    <div class="form-g"><label>Email</label><input type="email" placeholder="email@exemple.fr"></div>
+    <div class="form-g"><label>Discipline</label><select><option>Judo</option><option>Ju-Jitsu</option><option>Self-Défense</option></select></div>
+    <div class="form-g"><label>Message</label><textarea placeholder="Votre message…"></textarea></div>
+    <button class="btn-sub">Envoyer</button>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">JUDO CLUB <span>COARRAZE-NAY</span></div>
+  <div class="f-copy">© 2025 · AFFILIÉ FFJDA</div>
+  <a class="f-myrkr" href="#">SITE PAR <span>MYRKR</span></a>
+</footer>
+</body>
+</html>

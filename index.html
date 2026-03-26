@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Judo Club Coarraze-Nay · Propositions de sites web · Myrkr</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f8ff;--white:#fff;--text:#0d0f1f;--muted:#64748b;--border:#e2e8f0;--p1:#7c3aed;--p2:#a855f7;--red:#c0392b;--gold:#c8a850;--green:#10b981;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-weight:300;}
+
+header{background:var(--white);border-bottom:1px solid var(--border);padding:0 56px;height:70px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;}
+.header-logo{font-size:1.2rem;font-weight:800;background:linear-gradient(135deg,var(--p1),var(--p2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.header-right{display:flex;align-items:center;gap:16px;}
+.header-tag{font-size:12px;color:var(--muted);}
+.header-cta{background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;padding:9px 20px;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;}
+
+.hero{padding:56px 56px 40px;}
+.hero-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--p1);font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.hero-eyebrow::before{content:'🥋';}
+.hero-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-1px;margin-bottom:10px;}
+.hero-sub{font-size:14px;color:var(--muted);line-height:1.7;max-width:640px;margin-bottom:0;}
+
+.disclaimer{display:flex;align-items:flex-start;gap:14px;background:#fffbeb;border:1.5px solid #fde68a;border-radius:12px;padding:16px 20px;margin:24px 56px 48px;}
+.disclaimer-icon{font-size:1.3rem;flex-shrink:0;}
+.disclaimer-text{font-size:13px;color:#92400e;line-height:1.7;}
+.disclaimer-text strong{font-weight:700;color:#78350f;}
+
+.demos{padding:0 56px 80px;}
+.demos-section{margin-bottom:52px;}
+.section-label{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.section-label h2{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.demos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.demos-grid.two{grid-template-columns:repeat(2,1fr);}
+.demos-grid.four{grid-template-columns:repeat(4,1fr);}
+
+.demo-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;text-decoration:none;display:block;transition:all .3s;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.demo-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(124,58,237,0.1);border-color:rgba(124,58,237,0.25);}
+
+.preview-wrap{position:relative;height:220px;overflow:hidden;background:#f0f2ff;border-bottom:1px solid var(--border);}
+.preview-iframe{width:1280px;height:860px;border:none;transform:scale(0.344);transform-origin:top left;pointer-events:none;}
+.preview-overlay{position:absolute;inset:0;cursor:pointer;z-index:1;display:flex;align-items:center;justify-content:center;}
+.preview-overlay:hover .preview-bg{background:rgba(10,10,30,0.45);}
+.preview-overlay:hover .open-btn{opacity:1;transform:scale(1);}
+.preview-bg{position:absolute;inset:0;background:rgba(10,10,30,0);transition:background .25s;}
+.open-btn{background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;padding:10px 22px;border-radius:50px;font-size:12px;font-weight:700;opacity:0;transform:scale(0.85);transition:all .25s;position:relative;z-index:2;white-space:nowrap;box-shadow:0 4px 16px rgba(124,58,237,0.4);}
+
+.card-info{padding:16px 18px;}
+.card-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+.tag{font-size:10px;font-weight:600;padding:3px 10px;border-radius:50px;letter-spacing:0.3px;}
+.tag-purple{background:#f5f3ff;color:var(--p1);}
+.tag-red{background:#fef2f2;color:var(--red);}
+.tag-gold{background:#fffbeb;color:#92400e;}
+.tag-blue{background:#eff6ff;color:#1d4ed8;}
+.tag-green{background:#f0fdf4;color:#166534;}
+.tag-orange{background:#fff7ed;color:#c2410c;}
+.tag-pink{background:#fdf2f8;color:#9d174d;}
+.tag-gray{background:#f8fafc;color:var(--muted);}
+.card-name{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.card-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+.card-link{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid var(--border);}
+.card-link-text{font-size:11px;font-weight:600;color:var(--p1);}
+.card-link-arrow{font-size:11px;color:var(--p1);}
+
+.note-box{background:linear-gradient(135deg,rgba(124,58,237,0.05),rgba(168,85,247,0.03));border:1.5px solid rgba(124,58,237,0.12);border-radius:16px;padding:28px 32px;display:flex;gap:20px;align-items:flex-start;}
+.note-icon{font-size:1.8rem;flex-shrink:0;}
+.note-title{font-size:14px;font-weight:700;margin-bottom:10px;}
+.note-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px;margin-bottom:20px;}
+.note-item{font-size:13px;color:var(--muted);display:flex;gap:7px;}
+.note-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.note-btn-primary{background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;padding:11px 24px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:'Plus Jakarta Sans',sans-serif;}
+.note-btn-secondary{background:none;border:1.5px solid var(--border);color:var(--text);padding:11px 24px;border-radius:50px;font-size:13px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;}
+
+footer{background:var(--text);padding:32px 56px;display:flex;justify-content:space-between;align-items:center;}
+.f-logo{font-size:1rem;font-weight:800;background:linear-gradient(135deg,var(--p1),var(--p2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.f-copy{font-size:12px;color:rgba(255,255,255,0.3);}
+.f-contact{font-size:12px;color:rgba(255,255,255,0.4);}
+
+@media(max-width:1100px){.demos-grid.four{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:800px){header,.hero,.disclaimer,.demos,footer{padding-left:20px;padding-right:20px;}.disclaimer{margin:20px 20px 32px;}.demos-grid,.demos-grid.two,.demos-grid.four{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">Myrkr</div>
+  <div class="header-right">
+    <span class="header-tag">8 propositions · Judo Club Coarraze-Nay</span>
+    <button class="header-cta">📞 Nous contacter</button>
+  </div>
+</header>
+
+<div class="hero">
+  <p class="hero-eyebrow">Propositions Myrkr · Judo Club Coarraze-Nay · Judo · Ju-Jitsu</p>
+  <h2 class="hero-title">8 maquettes pour votre club</h2>
+  <p class="hero-sub">8 directions de design entièrement différentes. Chaque maquette est cliquable, navigable et personnalisable à 100% — couleurs, textes, photos, structure. Cliquez sur un aperçu pour l'ouvrir en plein écran.</p>
+</div>
+
+<div class="disclaimer">
+  <span class="disclaimer-icon">⚠️</span>
+  <div class="disclaimer-text">
+    <strong>Maquettes de démonstration uniquement.</strong> Les contenus (textes, tarifs, horaires, palmarès, photos) sont des exemples fictifs. Les formulaires et boutons ne sont pas fonctionnels dans ces démos. Le site livré sera 100% opérationnel avec vos vraies informations, votre panneau d'administration et votre référencement Google inclus.
+  </div>
+</div>
+
+<div class="demos">
+
+  <!-- LIGNE 1 : 3 styles principaux -->
+  <div class="demos-section">
+    <div class="section-label"><h2>Styles institutionnels</h2></div>
+    <div class="demos-grid">
+
+      <a class="demo-card" href="judo-v1-pro.html" target="_blank">
+        <div class="preview-wrap">
+          <iframe class="preview-iframe" src="judo-v1-pro.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+          <div class="preview-overlay"><div class="preview-bg"></div><div class="open-btn">Voir la démo →</div></div>
+        </div>
+        <div class="card-info">
+          <div class="card-tags"><span class="tag tag-gray">V1</span><span class="tag tag-gold">Pro · Institutionnel</span><span class="tag tag-gray">Marine / Or</span></div>
+          <div class="card-name">Version Pro Institutionnel</div>
+          <div class="card-desc">Fond marine profond, typographie Playfair serif, accents dorés. Sobre, élégant, fédéral. Parfait pour un club avec palmarès.</div>
+          <div class="card-link"><span class="card-link-text">Ouvrir la démo</span><span class="card-link-arrow">↗</span></div>
+        </div>
+      </a>
+
+      <a class="demo-card" href="judo-v4-combat.html" target="_blank">
+        <div class="preview-wrap">
+          <iframe class="preview-iframe" src="judo-v4-combat.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+          <div class="preview-overlay"><div class="preview-bg"></div><div class="open-btn">Voir la démo →</div></div>
+        </div>
+        <div class="card-info">
+          <div class="card-tags"><span class="tag tag-gray">V4</span><span class="tag tag-red">Combat · Martial</span><span class="tag tag-gray">Sombre / Rouge</span></div>
+          <div class="card-name">Version Combat & Impact</div>
+          <div class="card-desc">Fond noir, rouge sang, Bebas Neue condensé XXL. Ambiance arts martiaux, puissance, dépassement. Pour les clubs compétition.</div>
+          <div class="card-link"><span class="card-link-text">Ouvrir la démo</span><span class="card-link-arrow">↗</span></div>
+        </div>
+      </a>
+
+      <a class="demo-card" href="judo-v5-vintage.html" target="_blank">
+        <div class="preview-wrap">
+          <iframe class="preview-iframe" src="judo-v5-vintage.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+          <div class="preview-overlay"><div class="preview-bg"></div><div class="open-btn">Voir la démo →</div></div>
+        </div>
+        <div class="card-info">
+          <div class="card-tags"><span class="tag tag-gold">Vintage · Rétro</span><span class="tag tag-gray">Affiche années 60</span></div>
+          <div class="card-name">Version Vintage — Depuis 1972</div>
+          <div class="card-desc">Crème, brun, rouge, moutarde. Texture papier vieilli, Alfa Slab One. Affiche rétro japonaise. Met en valeur l'histoire du club.</div>
+          <div class="card-link"><span class="card-link-text">Ouvrir la démo</span><span class="card-link-arrow">↗</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- LIGNE 2 : 2 styles culturels -->
+  <div class="demos-section">
+    <div class="section-label"><h2>Styles culturels & philosophiques</h2></div>
+    <div class="demos-grid two">
+
+      <a class="demo-card" href="judo-v2-nippon.html" target="_blank">
+        <div class="preview-wrap">
+          <iframe class="preview-iframe" src="judo-v2-nippon.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+          <div class="preview-overlay"><div class="preview-bg"></div><div class="open-btn">Voir la démo →</div></div>
+        </div>
+        <div class="card-info">
+          <div class="card-tags"><span class="tag tag-gray">V2</span><span class="tag tag-red">Nippon · Japonais</span><span class="tag tag-gray">Washi · Encre</span></div>
+          <div class="card-name">Version Nippon — 柔道</div>
+          <div class="card-desc">Fond washi, fond noir calligraphie, Noto Serif JP, kanjis décoratifs, sceau rouge. Immersion totale dans la culture japonaise et les origines du judo.</div>
+          <div class="card-link"><span class="card-link-text">Ouvrir la démo</span><span class="card-link-arrow">↗</span></div>
+        </div>
+      </a>
+
+      <a class="demo-card" href="judo-v6-zen.html" target="_blank">
+        <div class="preview-wrap">
+          <iframe class="preview-iframe" src="judo-v6-zen.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+          <div class="preview-overlay"><div class="preview-bg"></div><div class="open-btn">Voir la démo →</div></div>
+        </div>
+        <div class="card-info">
+          <div class="card-tags"><span class="tag tag-gray">V6</span><span class="tag tag-purple">Zen · Philosophique</span><span class="tag tag-gray">Blanc épuré</span></div>
+          <div class="card-name">Version Zen — La Voie</div>
+          <div class="card-desc">Blanc pur, Cormorant Garamond fin, accents rouges discrets. Le silence, l'espace, le ma japonais. Poésie et philosophie. Pour un club qui veut inspirer.</div>
+          <div class="card-link"><span class="card-link-text">Ouvrir la démo</span><span class="card-link-arrow">↗</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- LIGNE 3 : 3 styles grand public -->
+  <div class="demos-section">
+    <div class="section-label"><h2>Styles grand public & accessibles</h2></div>
+    <div class="demos-grid">
+
+      <a class="demo-card" href="judo-v3-toutpublic.html" target="_blank">
+        <div class="preview-wrap">
+          <iframe class="preview-iframe" src="judo-v3-toutpublic.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+          <div class="preview-overlay"><div class="preview-bg"></div><div class="open-btn">Voir la démo →</div></div>
+        </div>
+        <div class="card-info">
+          <div class="card-tags"><span class="tag tag-gray">V3</span><span class="tag tag-blue">Club tout public</span><span class="tag tag-gray">Familles</span></div>
+          <div class="card-name">Version Club Tout Public</div>
+          <div class="card-desc">Blanc, bleu, jaune. Nunito arrondi, badges colorés, grille d'activités claire. Accessible, inclusif, familial. Pensé pour convaincre les parents.</div>
+          <div class="card-link"><span class="card-link-text">Ouvrir la démo</span><span class="card-link-arrow">↗</span></div>
+        </div>
+      </a>
+
+      <a class="demo-card" href="judo-v7-moderne.html" target="_blank">
+        <div class="preview-wrap">
+          <iframe class="preview-iframe" src="judo-v7-moderne.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+          <div class="preview-overlay"><div class="preview-bg"></div><div class="open-btn">Voir la démo →</div></div>
+        </div>
+        <div class="card-info">
+          <div class="card-tags"><span class="tag tag-purple">Moderne · Dynamique</span><span class="tag tag-gray">Violet / Rose</span></div>
+          <div class="card-name">Version Moderne & Impact</div>
+          <div class="card-desc">Fond sombre, dégradé violet→rose, Syne, blobs animés. Tech & startup energy. Ultra moderne, différenciant. Pour un club qui veut sortir du lot.</div>
+          <div class="card-link"><span class="card-link-text">Ouvrir la démo</span><span class="card-link-arrow">↗</span></div>
+        </div>
+      </a>
+
+      <a class="demo-card" href="judo-v8-enfants.html" target="_blank">
+        <div class="preview-wrap">
+          <iframe class="preview-iframe" src="judo-v8-enfants.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+          <div class="preview-overlay"><div class="preview-bg"></div><div class="open-btn">Voir la démo →</div></div>
+        </div>
+        <div class="card-info">
+          <div class="card-tags"><span class="tag tag-orange">Enfants · Baby Judo</span><span class="tag tag-gray">Fun · Cartoon</span></div>
+          <div class="card-name">Version Baby Judo — Enfants</div>
+          <div class="card-desc">Orange vif, violet, Fredoka One, cartes animées, badges emoji. Pensé pour convaincre les parents de jeunes enfants dès 4 ans. Fun et sécurisant.</div>
+          <div class="card-link"><span class="card-link-text">Ouvrir la démo</span><span class="card-link-arrow">↗</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- NOTE FINALE -->
+  <div class="note-box">
+    <div class="note-icon">💡</div>
+    <div>
+      <div class="note-title">Ce qu'inclut chaque site livré</div>
+      <div class="note-grid">
+        <div class="note-item">✅ Design sur mesure choisi ensemble</div>
+        <div class="note-item">✅ Vos vraies photos et informations</div>
+        <div class="note-item">✅ Panneau admin (actus, horaires, résultats)</div>
+        <div class="note-item">✅ Formulaire de contact fonctionnel</div>
+        <div class="note-item">✅ Référencement Google local (SEO)</div>
+        <div class="note-item">✅ Hébergement à partir de 8€/an</div>
+        <div class="note-item">✅ Livraison en 7 jours</div>
+        <div class="note-item">✅ 100% responsive mobile & tablette</div>
+      </div>
+      <div class="note-btns">
+        <button class="note-btn-primary">📞 Discuter du projet</button>
+        <button class="note-btn-secondary">contact@myrkr.fr</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="f-logo">Myrkr</div>
+  <div class="f-copy">© 2025 Myrkr · Propositions pour le Judo Club Coarraze-Nay</div>
+  <div class="f-contact">contact@myrkr.fr</div>
+</footer>
+
+</body>
+</html>

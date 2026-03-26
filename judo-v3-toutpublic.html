@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Judo Club Coarraze-Nay — Pour tous !</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#2563eb;--blue-l:#dbeafe;--red:#ef4444;--red-l:#fee2e2;--yellow:#fbbf24;--green:#10b981;--green-l:#d1fae5;--white:#fff;--bg:#f0f4ff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Nunito Sans',sans-serif;font-weight:400;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(8px);border-bottom:3px solid var(--blue);padding:0 48px;height:70px;display:flex;justify-content:space-between;align-items:center;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-gi{width:40px;height:40px;background:var(--blue);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;}
+.nav-brand{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.1rem;color:var(--text);}
+.nav-brand span{color:var(--blue);}
+.nav-links{display:flex;list-style:none;}
+.nav-links a{display:block;padding:0 14px;font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;line-height:70px;transition:color .2s;}
+.nav-links a:hover{color:var(--blue);}
+.nav-cta{background:var(--blue);color:#fff;padding:10px 22px;border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 4px 12px rgba(37,99,235,0.3);transition:background .2s;}
+.nav-cta:hover{background:#1d4ed8;}
+
+.hero{padding:100px 48px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--blue-l);color:var(--blue);padding:7px 16px;border-radius:50px;font-size:12px;font-weight:700;margin-bottom:20px;}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-title{font-family:'Nunito',sans-serif;font-size:clamp(2.5rem,5vw,4.2rem);font-weight:900;line-height:1.05;margin-bottom:14px;color:var(--text);}
+.hero-title span{color:var(--blue);}
+.hero-sub{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:28px;max-width:460px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px;}
+.btn-blue{background:var(--blue);color:#fff;padding:14px 28px;border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(37,99,235,0.3);transition:all .2s;}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,99,235,0.35);}
+.btn-yellow{background:var(--yellow);color:var(--text);padding:14px 28px;border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:all .2s;}
+.btn-yellow:hover{transform:translateY(-2px);}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;}
+.badge{display:flex;align-items:center;gap:6px;background:var(--white);border:1.5px solid var(--border);border-radius:50px;padding:7px 14px;font-size:12px;font-weight:700;}
+.hero-imgs{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-radius:24px;overflow:hidden;}
+.h-img{background-size:cover;background-position:center;}
+.h-img:nth-child(1){grid-row:1/3;background-image:url('https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&q=80');min-height:400px;}
+.h-img:nth-child(2){background-image:url('https://images.unsplash.com/photo-1590874315270-5c5f12e95f8a?w=400&q=80');min-height:195px;}
+.h-img:nth-child(3){background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80');min-height:195px;}
+
+.acts{padding:80px 48px;background:var(--white);}
+.section-center{text-align:center;margin-bottom:48px;}
+.s-pill{display:inline-block;background:var(--blue-l);color:var(--blue);font-size:11px;font-weight:800;padding:5px 16px;border-radius:50px;margin-bottom:12px;letter-spacing:1px;text-transform:uppercase;}
+.s-title{font-family:'Nunito',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:var(--text);}
+.s-title span{color:var(--blue);}
+.acts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.act-card{background:var(--bg);border:1.5px solid var(--border);border-radius:20px;padding:28px 20px;text-align:center;transition:all .3s;cursor:pointer;}
+.act-card:hover{transform:translateY(-5px);box-shadow:0 12px 28px rgba(37,99,235,0.1);border-color:var(--blue);}
+.act-emoji{font-size:2.4rem;margin-bottom:12px;display:block;}
+.act-name{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;color:var(--text);margin-bottom:6px;}
+.act-age{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:50px;background:var(--blue-l);color:var(--blue);margin-bottom:8px;}
+.act-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+
+.publics{padding:80px 48px;background:var(--blue);}
+.publics h2{font-family:'Nunito',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#fff;text-align:center;margin-bottom:48px;}
+.publics h2 span{color:var(--yellow);}
+.pub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.pub-card{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:32px 24px;text-align:center;transition:background .3s;}
+.pub-card:hover{background:rgba(255,255,255,0.15);}
+.pub-icon{font-size:2.8rem;margin-bottom:14px;display:block;}
+.pub-title{font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:8px;}
+.pub-desc{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;}
+
+.tarifs{padding:80px 48px;background:var(--white);}
+.tarifs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;}
+.tarif{background:var(--bg);border:1.5px solid var(--border);border-radius:20px;padding:36px 28px;position:relative;transition:all .3s;}
+.tarif:hover{border-color:var(--blue);}
+.tarif.featured{border-color:var(--blue);background:var(--blue-l);}
+.tarif-badge{position:absolute;top:-12px;left:24px;background:var(--yellow);color:var(--text);font-size:10px;font-weight:800;padding:4px 14px;border-radius:50px;}
+.tarif-name{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:14px;}
+.tarif-price{font-family:'Nunito',sans-serif;font-size:2.8rem;font-weight:900;color:var(--text);line-height:1;margin-bottom:6px;}
+.tarif-price sup{font-size:1.2rem;}
+.tarif-sub{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.tarif-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+.tarif-features li{font-size:13px;color:var(--muted);display:flex;gap:8px;}
+.tarif-features li::before{content:'✓';color:var(--green);font-weight:800;flex-shrink:0;}
+.btn-tarif{width:100%;background:var(--blue);color:#fff;border:none;border-radius:50px;padding:13px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:background .2s;}
+.btn-tarif:hover{background:#1d4ed8;}
+
+.contact{padding:80px 48px;background:var(--text);}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.contact h2{font-family:'Nunito',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#fff;margin-bottom:16px;}
+.contact h2 span{color:var(--yellow);}
+.contact-desc{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:28px;}
+.contact-infos{display:flex;flex-direction:column;gap:14px;}
+.c-item{display:flex;gap:12px;font-size:14px;color:rgba(255,255,255,0.8);background:rgba(255,255,255,0.06);border-radius:12px;padding:14px 16px;}
+.contact-form{background:var(--white);border-radius:20px;padding:36px;}
+.form-g{margin-bottom:16px;}
+.form-g label{display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:6px;}
+.form-g input,.form-g select,.form-g textarea{width:100%;background:var(--bg);border:1.5px solid var(--border);color:var(--text);padding:12px 14px;border-radius:10px;font-family:'Nunito Sans',sans-serif;font-size:14px;outline:none;transition:border-color .2s;}
+.form-g input:focus,.form-g textarea:focus{border-color:var(--blue);}
+.form-g textarea{min-height:80px;resize:vertical;}
+.btn-sub{width:100%;background:var(--blue);color:#fff;border:none;border-radius:50px;padding:15px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:background .2s;}
+.btn-sub:hover{background:#1d4ed8;}
+
+footer{background:rgba(0,0,0,0.5);padding:32px 48px;display:flex;justify-content:space-between;align-items:center;}
+.f-logo{font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;color:#fff;}
+.f-logo span{color:var(--yellow);}
+.f-copy{font-size:11px;color:rgba(255,255,255,0.3);}
+.f-myrkr{font-size:11px;color:rgba(255,255,255,0.3);text-decoration:none;}
+.f-myrkr span{color:var(--yellow);}
+
+@media(max-width:900px){nav{padding:0 20px;}.nav-links{display:none;}.hero,.contact-inner{grid-template-columns:1fr;padding:100px 24px 60px;}.acts{padding:60px 24px;}.acts-grid{grid-template-columns:1fr 1fr;}.pub-grid,.tarifs-grid{grid-template-columns:1fr;}.publics,.tarifs,.contact{padding:60px 24px;}footer{padding:24px;flex-direction:column;gap:12px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-gi">🥋</div>
+    <span class="nav-brand">Judo Club <span>Coarraze-Nay</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#acts">Activités</a></li>
+    <li><a href="#tarifs">Tarifs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta">🎉 S'inscrire</button>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="hero-tag">Club ouvert à tous · Coarraze-Nay · 64800</div>
+    <h1 class="hero-title">Judo · Ju-Jitsu<br><span>pour tout le monde !</span></h1>
+    <p class="hero-sub">Enfants, adultes, débutants, compétiteurs — tout le monde est le bienvenu au Judo Club Coarraze-Nay. 1er cours d'essai gratuit !</p>
+    <div class="hero-btns">
+      <button class="btn-blue">Essayer gratuitement</button>
+      <button class="btn-yellow">📅 Voir les horaires</button>
+    </div>
+    <div class="hero-badges">
+      <div class="badge">🥇 Affilié FFJDA</div>
+      <div class="badge">👶 Dès 4 ans</div>
+      <div class="badge">🏆 Compétition</div>
+      <div class="badge">💪 Self-Défense</div>
+    </div>
+  </div>
+  <div class="hero-imgs">
+    <div class="h-img"></div>
+    <div class="h-img"></div>
+    <div class="h-img"></div>
+  </div>
+</section>
+
+<section class="acts" id="acts">
+  <div class="section-center">
+    <span class="s-pill">Ce qu'on pratique</span>
+    <h2 class="s-title">Des activités pour <span>tous les âges</span></h2>
+  </div>
+  <div class="acts-grid">
+    <div class="act-card"><span class="act-emoji">🥋</span><div class="act-name">Baby Judo</div><span class="act-age">4 – 6 ans</span><p class="act-desc">Éveil moteur et premiers pas sur le tatami. Ludique et sécurisé.</p></div>
+    <div class="act-card"><span class="act-emoji">🤸</span><div class="act-name">Judo Enfants</div><span class="act-age">7 – 14 ans</span><p class="act-desc">Apprentissage technique, valeurs, compétition si souhaité.</p></div>
+    <div class="act-card"><span class="act-emoji">💪</span><div class="act-name">Judo Adultes</div><span class="act-age">15 ans et +</span><p class="act-desc">Loisir ou compétition. Toutes ceintures et tous niveaux.</p></div>
+    <div class="act-card"><span class="act-emoji">🛡️</span><div class="act-name">Ju-Jitsu & Self-Défense</div><span class="act-age">Tous âges</span><p class="act-desc">Techniques pratiques, défense personnelle, confiance en soi.</p></div>
+  </div>
+</section>
+
+<section class="publics">
+  <h2>Un club pour <span>chacun</span> 🥋</h2>
+  <div class="pub-grid">
+    <div class="pub-card"><span class="pub-icon">👶</span><div class="pub-title">Les enfants</div><div class="pub-desc">Dès 4 ans. Éveil moteur, discipline, confiance en soi et amis pour la vie.</div></div>
+    <div class="pub-card"><span class="pub-icon">🏃</span><div class="pub-title">Les adultes</div><div class="pub-desc">Loisir ou compétition. Remise en forme, technique, dépassement de soi.</div></div>
+    <div class="pub-card"><span class="pub-icon">👨‍👩‍👧</span><div class="pub-title">Les familles</div><div class="pub-desc">Parent et enfant peuvent s'inscrire ensemble. Une activité à partager !</div></div>
+  </div>
+</section>
+
+<section class="tarifs" id="tarifs">
+  <div class="section-center">
+    <span class="s-pill">Rejoindre le club</span>
+    <h2 class="s-title">Tarifs <span>saison 2025-2026</span></h2>
+  </div>
+  <div class="tarifs-grid">
+    <div class="tarif"><div class="tarif-name">Enfant</div><div class="tarif-price"><sup>€</sup>180</div><div class="tarif-sub">Licence annuelle</div><ul class="tarif-features"><li>Dès 4 ans</li><li>Licence FFJDA incluse</li><li>Équipement conseillé</li></ul><button class="btn-tarif">S'inscrire</button></div>
+    <div class="tarif featured"><div class="tarif-badge">⭐ Populaire</div><div class="tarif-name">Adulte</div><div class="tarif-price"><sup>€</sup>240</div><div class="tarif-sub">Licence annuelle</div><ul class="tarif-features"><li>Judo et/ou Ju-Jitsu</li><li>Licence FFJDA incluse</li><li>Compétition possible</li></ul><button class="btn-tarif">S'inscrire</button></div>
+    <div class="tarif"><div class="tarif-name">Famille</div><div class="tarif-price"><sup>€</sup>380</div><div class="tarif-sub">2 licences adulte+enfant</div><ul class="tarif-features"><li>Un tarif pour deux</li><li>2 licences FFJDA</li><li>Cours séparés ou ensemble</li></ul><button class="btn-tarif">S'inscrire</button></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <h2>Venez nous<br><span>rencontrer !</span></h2>
+      <p class="contact-desc">Premier cours d'essai gratuit pour tout le monde. Venez avec votre tenue de sport, on s'occupe du reste.</p>
+      <div class="contact-infos">
+        <div class="c-item">📍 Dojo municipal de Coarraze — 64800</div>
+        <div class="c-item">📞 05 59 XX XX XX</div>
+        <div class="c-item">⏰ Lundi / Mercredi / Vendredi 18h – 21h · Samedi 10h</div>
+        <div class="c-item">✉️ judoclubcoarrazenay@email.fr</div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-g"><label>Prénom & Nom</label><input type="text" placeholder="Marie Dupont"></div>
+      <div class="form-g"><label>Email</label><input type="email" placeholder="marie@email.fr"></div>
+      <div class="form-g"><label>Je suis…</label><select><option>Un enfant (via parent)</option><option>Un adulte</option><option>Une famille</option></select></div>
+      <div class="form-g"><label>Message</label><textarea placeholder="Votre question…"></textarea></div>
+      <button class="btn-sub">Envoyer mon message 🥋</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">Judo Club <span>Coarraze-Nay</span> 🥋</div>
+  <div class="f-copy">© 2025 · Affilié FFJDA</div>
+  <a class="f-myrkr" href="#">Site par <span>Myrkr</span></a>
+</footer>
+</body>
+</html>

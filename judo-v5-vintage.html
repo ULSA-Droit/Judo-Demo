@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Judo Club Coarraze-Nay · Depuis 1972</title>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Special+Elite&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f5edd8;--dark-brown:#2d1e0a;--red:#bf3a2b;--orange:#e07020;--mustard:#c8a020;--sage:#4a6040;--border:rgba(45,30,10,0.15);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--dark-brown);font-family:'Libre Baskerville',serif;font-weight:400;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23f5edd8'/%3E%3Crect x='0' y='0' width='1' height='1' fill='%23e8d8b8' opacity='0.3'/%3E%3C/svg%3E");pointer-events:none;z-index:0;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--dark-brown);padding:0 48px;height:64px;display:flex;justify-content:space-between;align-items:center;border-bottom:4px solid var(--red);}
+.nav-logo{font-family:'Alfa Slab One',serif;font-size:1.1rem;letter-spacing:2px;color:var(--cream);text-decoration:none;}
+.nav-logo span{color:var(--mustard);}
+.nav-links{display:flex;list-style:none;}
+.nav-links a{display:block;padding:0 16px;font-size:12px;font-family:'Special Elite',serif;letter-spacing:2px;text-transform:uppercase;color:rgba(245,237,216,0.6);text-decoration:none;line-height:64px;transition:color .2s;}
+.nav-links a:hover{color:var(--mustard);}
+.nav-cta{background:var(--red);color:var(--cream);padding:8px 20px;border:2px solid var(--mustard);font-family:'Special Elite',serif;font-size:12px;cursor:pointer;letter-spacing:1px;transition:background .2s;}
+.nav-cta:hover{background:#9e2d1f;}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;z-index:1;}
+.hero-left{background:var(--dark-brown);display:flex;flex-direction:column;justify-content:center;padding:120px 56px 80px;position:relative;overflow:hidden;}
+.hero-left::before{content:'';position:absolute;top:0;right:0;bottom:0;width:12px;background:repeating-linear-gradient(0deg,var(--red),var(--red) 20px,var(--mustard) 20px,var(--mustard) 40px);}
+.hero-stamp{border:3px solid var(--mustard);padding:10px 20px;display:inline-block;margin-bottom:28px;font-family:'Special Elite',serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--mustard);}
+.hero-title{font-family:'Alfa Slab One',serif;font-size:clamp(3.5rem,7vw,8rem);line-height:0.9;color:var(--cream);margin-bottom:12px;}
+.hero-title .red{color:var(--red);display:block;}
+.hero-subtitle{font-family:'Special Elite',serif;font-size:1rem;color:var(--mustard);letter-spacing:4px;text-transform:uppercase;margin-bottom:32px;border-top:1px solid rgba(200,160,32,0.3);border-bottom:1px solid rgba(200,160,32,0.3);padding:10px 0;}
+.hero-desc{font-size:14px;color:rgba(245,237,216,0.6);line-height:2;max-width:380px;margin-bottom:40px;font-style:italic;}
+.hero-btns{display:flex;gap:12px;}
+.btn-red{background:var(--red);color:var(--cream);padding:14px 32px;border:2px solid var(--red);font-family:'Special Elite',serif;font-size:13px;letter-spacing:2px;cursor:pointer;transition:background .2s;}
+.btn-red:hover{background:#9e2d1f;}
+.btn-cream{background:none;color:var(--cream);padding:14px 32px;border:2px solid rgba(245,237,216,0.3);font-family:'Special Elite',serif;font-size:13px;letter-spacing:2px;cursor:pointer;transition:border-color .2s;}
+.btn-cream:hover{border-color:var(--mustard);color:var(--mustard);}
+.hero-right{position:relative;overflow:hidden;}
+.hero-img{width:100%;height:100%;background:url('https://images.unsplash.com/photo-1555597673-b21d5c935865?w=800&q=85')center/cover;filter:sepia(0.3) contrast(1.1);}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to left,transparent,rgba(45,30,10,0.15));}
+.hero-badge{position:absolute;bottom:40px;right:40px;width:100px;height:100px;background:var(--red);border:3px solid var(--mustard);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:1;transform:rotate(12deg);}
+.badge-year{font-family:'Alfa Slab One',serif;font-size:1.4rem;color:var(--cream);line-height:1;}
+.badge-text{font-size:9px;font-family:'Special Elite',serif;color:var(--mustard);letter-spacing:1px;}
+
+.disciplines{padding:80px 48px;background:var(--cream);position:relative;z-index:1;}
+.disciplines::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:repeating-linear-gradient(90deg,var(--red),var(--red) 60px,var(--mustard) 60px,var(--mustard) 120px,var(--dark-brown) 120px,var(--dark-brown) 180px);}
+.s-label{font-family:'Special Elite',serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--red);margin-bottom:8px;text-align:center;}
+.s-title{font-family:'Alfa Slab One',serif;font-size:clamp(2.5rem,5vw,5rem);color:var(--dark-brown);text-align:center;margin-bottom:56px;line-height:1;}
+.s-title .red{color:var(--red);}
+.disc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.disc{border:2px solid var(--dark-brown);padding:40px 28px;position:relative;background:var(--cream);transition:background .3s;}
+.disc:hover{background:#ede5c8;}
+.disc-num{font-family:'Alfa Slab One',serif;font-size:4rem;color:rgba(45,30,10,0.06);position:absolute;top:16px;right:16px;line-height:1;}
+.disc-icon{font-size:2.2rem;margin-bottom:16px;display:block;}
+.disc-name{font-family:'Alfa Slab One',serif;font-size:1.6rem;color:var(--dark-brown);margin-bottom:6px;}
+.disc-jp{font-family:'Special Elite',serif;font-size:11px;letter-spacing:3px;color:var(--red);margin-bottom:14px;text-transform:uppercase;}
+.disc-desc{font-size:13px;color:rgba(45,30,10,0.6);line-height:1.8;font-style:italic;}
+.disc-corner{position:absolute;bottom:0;right:0;width:0;height:0;border-style:solid;border-width:0 0 32px 32px;border-color:transparent transparent var(--red) transparent;}
+
+.valeurs{padding:80px 48px;background:var(--dark-brown);position:relative;z-index:1;}
+.valeurs::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:repeating-linear-gradient(90deg,var(--mustard),var(--mustard) 60px,var(--red) 60px,var(--red) 120px);}
+.valeurs h2{font-family:'Alfa Slab One',serif;font-size:clamp(2rem,4vw,4rem);color:var(--cream);text-align:center;margin-bottom:48px;}
+.valeurs h2 span{color:var(--mustard);}
+.val-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+.val{background:rgba(255,255,255,0.04);border:1px solid rgba(200,160,32,0.1);padding:36px 24px;text-align:center;transition:background .3s;}
+.val:hover{background:rgba(191,58,43,0.15);}
+.val-icon{font-size:2rem;margin-bottom:14px;display:block;}
+.val-name{font-family:'Alfa Slab One',serif;font-size:1.1rem;color:var(--mustard);margin-bottom:8px;}
+.val-desc{font-size:12px;color:rgba(245,237,216,0.5);line-height:1.7;font-style:italic;}
+
+.contact{padding:80px 48px;position:relative;z-index:1;background:var(--cream);display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+.contact::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:repeating-linear-gradient(90deg,var(--sage),var(--sage) 60px,var(--mustard) 60px,var(--mustard) 120px);}
+.contact h2{font-family:'Alfa Slab One',serif;font-size:clamp(2rem,4vw,4rem);color:var(--dark-brown);margin-bottom:20px;line-height:1;}
+.contact h2 span{color:var(--red);}
+.contact-desc{font-size:14px;color:rgba(45,30,10,0.6);line-height:2;margin-bottom:28px;font-style:italic;}
+.contact-infos{display:flex;flex-direction:column;gap:14px;}
+.c-item{font-size:14px;color:var(--dark-brown);padding-bottom:14px;border-bottom:1px dashed var(--border);}
+.c-item:last-child{border-bottom:none;}
+.form-g{margin-bottom:18px;}
+.form-g label{display:block;font-family:'Special Elite',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dark-brown);margin-bottom:7px;}
+.form-g input,.form-g select,.form-g textarea{width:100%;background:rgba(45,30,10,0.03);border:2px solid var(--border);color:var(--dark-brown);padding:12px 14px;font-family:'Libre Baskerville',serif;font-size:14px;outline:none;transition:border-color .2s;}
+.form-g input:focus,.form-g textarea:focus{border-color:var(--red);}
+.form-g textarea{min-height:80px;resize:none;}
+.btn-sub{width:100%;background:var(--dark-brown);color:var(--cream);border:none;padding:16px;font-family:'Special Elite',serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.btn-sub:hover{background:var(--red);}
+
+footer{background:var(--dark-brown);padding:36px 48px;border-top:4px solid var(--red);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;}
+.f-logo{font-family:'Alfa Slab One',serif;font-size:1rem;letter-spacing:2px;color:var(--cream);}
+.f-logo span{color:var(--mustard);}
+.f-copy{font-family:'Special Elite',serif;font-size:11px;color:rgba(245,237,216,0.3);letter-spacing:2px;}
+.f-myrkr{font-family:'Special Elite',serif;font-size:11px;color:rgba(245,237,216,0.3);text-decoration:none;}
+.f-myrkr span{color:var(--mustard);}
+
+@media(max-width:900px){nav{padding:0 20px;}.nav-links{display:none;}.hero{grid-template-columns:1fr;}.hero-right{height:50vh;}.hero-left{padding:100px 24px 60px;}.disciplines,.valeurs,.contact{padding:60px 24px;}.disc-grid{grid-template-columns:1fr;}.val-grid{grid-template-columns:1fr 1fr;}.contact{grid-template-columns:1fr;}footer{padding:24px;flex-direction:column;gap:12px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="#">JUDO CLUB · <span>COARRAZE-NAY</span></a>
+  <ul class="nav-links">
+    <li><a href="#disciplines">Disciplines</a></li>
+    <li><a href="#valeurs">Valeurs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta">S'inscrire</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-stamp">Affilié F.F.J.D.A · Pyrénées-Atlantiques</div>
+    <h1 class="hero-title">JUDO<br><span class="red">CLUB</span></h1>
+    <p class="hero-subtitle">Judo · Ju-Jitsu · Self-Défense</p>
+    <p class="hero-desc">"La voie de la souplesse triomphe toujours de la force brute." — Jigoro Kano. Depuis 1972, nous perpétuons cette tradition à Coarraze-Nay.</p>
+    <div class="hero-btns">
+      <button class="btn-red">Rejoindre le club</button>
+      <button class="btn-cream">Voir les horaires</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img"></div>
+    <div class="hero-badge"><div class="badge-year">1972</div><div class="badge-text">Fondé en</div></div>
+  </div>
+</section>
+
+<section class="disciplines" id="disciplines">
+  <p class="s-label">Ce que nous pratiquons</p>
+  <h2 class="s-title">NOS <span class="red">DISCIPLINES</span></h2>
+  <div class="disc-grid">
+    <div class="disc"><div class="disc-num">I</div><span class="disc-icon">🥋</span><div class="disc-name">Judo</div><div class="disc-jp">柔道</div><div class="disc-desc">Art martial olympique fondé par Jigoro Kano en 1882. La voie de la souplesse. Dès 4 ans.</div><div class="disc-corner"></div></div>
+    <div class="disc"><div class="disc-num">II</div><span class="disc-icon">🤼</span><div class="disc-name">Ju-Jitsu</div><div class="disc-jp">柔術</div><div class="disc-desc">L'art martial japonais originel. Technique ancestrale, tradition vivante. Adultes et adolescents.</div><div class="disc-corner"></div></div>
+    <div class="disc"><div class="disc-num">III</div><span class="disc-icon">🛡️</span><div class="disc-name">Self-Défense</div><div class="disc-jp">護身術</div><div class="disc-desc">Applications pratiques des arts martiaux pour la défense personnelle au quotidien.</div><div class="disc-corner"></div></div>
+  </div>
+</section>
+
+<section class="valeurs" id="valeurs">
+  <h2>Les <span>valeurs</span> du judo</h2>
+  <div class="val-grid">
+    <div class="val"><span class="val-icon">🙏</span><div class="val-name">Respect</div><div class="val-desc">Le salut ouvre et ferme chaque combat. Le respect de l'adversaire est absolu.</div></div>
+    <div class="val"><span class="val-icon">💪</span><div class="val-name">Courage</div><div class="val-desc">Affronter la défaite, se relever, continuer. Le tatami forge le caractère.</div></div>
+    <div class="val"><span class="val-icon">🌊</span><div class="val-name">Souplesse</div><div class="val-desc">La douceur triomphe de la force. Céder pour mieux vaincre — principe fondamental.</div></div>
+    <div class="val"><span class="val-icon">⚖️</span><div class="val-name">Équilibre</div><div class="val-desc">Corps et esprit. Sport et philosophie. Compétition et amitié.</div></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div>
+    <h2>Nous <span>rejoindre</span></h2>
+    <p class="contact-desc">Premier cours d'essai gratuit. Venez découvrir le dojo dans une ambiance chaleureuse et traditionnelle.</p>
+    <div class="contact-infos">
+      <div class="c-item">📍 Dojo municipal — Coarraze 64800</div>
+      <div class="c-item">📞 05 59 XX XX XX</div>
+      <div class="c-item">⏰ Lun / Mer / Ven 18h-21h · Sam 10h-12h</div>
+    </div>
+  </div>
+  <div>
+    <div class="form-g"><label>Nom complet</label><input type="text" placeholder="Prénom Nom"></div>
+    <div class="form-g"><label>Email</label><input type="email" placeholder="votre@email.fr"></div>
+    <div class="form-g"><label>Discipline</label><select><option>Judo</option><option>Ju-Jitsu</option><option>Self-Défense</option></select></div>
+    <div class="form-g"><label>Message</label><textarea placeholder="Votre question…"></textarea></div>
+    <button class="btn-sub">Envoyer le message</button>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">JUDO CLUB · <span>COARRAZE-NAY</span></div>
+  <div class="f-copy">© 2025 · DEPUIS 1972 · AFFILIÉ F.F.J.D.A.</div>
+  <a class="f-myrkr" href="#">SITE PAR <span>MYRKR</span></a>
+</footer>
+</body>
+</html>

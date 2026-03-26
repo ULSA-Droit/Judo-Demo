@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>柔道 · Judo Club Coarraze-Nay</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--washi:#f5f0e8;--ink:#1a1410;--red:#c0392b;--red2:#e74c3c;--gold:#b8924a;--muted:#8a7a68;--border:rgba(26,20,16,0.12);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--washi);color:var(--ink);font-family:'Cormorant Garamond',serif;font-weight:300;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c0392b' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none;z-index:0;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 56px;height:70px;background:rgba(245,240,232,0.97);backdrop-filter:blur(8px);border-bottom:2px solid var(--red);}
+.nav-logo{text-decoration:none;display:flex;align-items:center;gap:14px;}
+.nav-kanji{font-family:'Noto Serif JP',serif;font-size:1.6rem;color:var(--red);line-height:1;}
+.nav-text{font-size:13px;color:var(--ink);letter-spacing:1px;}
+.nav-text span{color:var(--red);}
+.nav-links{display:flex;list-style:none;}
+.nav-links a{display:block;padding:0 16px;font-size:13px;color:var(--muted);text-decoration:none;line-height:70px;font-style:italic;transition:color .2s;}
+.nav-links a:hover{color:var(--red);}
+.nav-cta{background:var(--red);color:#fff;padding:9px 22px;border:none;font-size:12px;letter-spacing:2px;cursor:pointer;font-family:'Cormorant Garamond',serif;transition:background .2s;}
+.nav-cta:hover{background:var(--red2);}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;z-index:1;}
+.hero-left{background:var(--ink);display:flex;flex-direction:column;justify-content:center;align-items:flex-end;padding:120px 64px 80px;position:relative;overflow:hidden;}
+.hero-left::before{content:'柔道';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Noto Serif JP',serif;font-size:20rem;color:rgba(255,255,255,0.03);line-height:1;pointer-events:none;}
+.hero-big-kanji{font-family:'Noto Serif JP',serif;font-size:clamp(5rem,12vw,12rem);color:rgba(255,255,255,0.08);line-height:1;margin-bottom:20px;text-align:right;}
+.hero-title{font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;color:#fff;text-align:right;line-height:1.3;margin-bottom:12px;letter-spacing:2px;}
+.hero-title em{font-style:italic;color:var(--red);}
+.hero-subtitle{font-family:'Noto Serif JP',serif;font-size:1rem;color:rgba(255,255,255,0.4);text-align:right;margin-bottom:40px;letter-spacing:3px;}
+.hero-line{width:60px;height:2px;background:var(--red);margin-left:auto;margin-bottom:28px;}
+.hero-desc{font-size:15px;color:rgba(255,255,255,0.5);text-align:right;line-height:2;max-width:380px;margin-bottom:40px;}
+.hero-btns{display:flex;gap:12px;justify-content:flex-end;}
+.btn-red{background:var(--red);color:#fff;padding:14px 32px;border:none;font-size:13px;font-style:italic;cursor:pointer;font-family:'Cormorant Garamond',serif;letter-spacing:1px;transition:background .2s;}
+.btn-red:hover{background:var(--red2);}
+.btn-ghost{background:none;color:rgba(255,255,255,0.6);padding:14px 32px;border:1px solid rgba(255,255,255,0.15);font-size:13px;font-style:italic;cursor:pointer;font-family:'Cormorant Garamond',serif;transition:border-color .2s;}
+.btn-ghost:hover{border-color:var(--red);color:var(--red);}
+.hero-right{position:relative;overflow:hidden;}
+.hero-img{width:100%;height:100%;background:url('https://images.unsplash.com/photo-1590874315270-5c5f12e95f8a?w=800&q=85')center/cover;}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to left,rgba(26,20,16,0.2),transparent 60%);}
+.hero-seal{position:absolute;top:40px;right:40px;width:90px;height:90px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif JP',serif;color:#fff;font-size:1.8rem;z-index:1;}
+
+.voie{padding:100px 56px;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;}
+.voie-content{}
+.s-kanji{font-family:'Noto Serif JP',serif;font-size:5rem;color:var(--red);opacity:0.15;line-height:1;margin-bottom:-20px;}
+.s-eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
+.s-title{font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;color:var(--ink);margin-bottom:20px;line-height:1.2;}
+.s-title em{font-style:italic;color:var(--red);}
+.s-desc{font-size:16px;color:var(--muted);line-height:2;margin-bottom:32px;}
+.voie-principes{list-style:none;display:flex;flex-direction:column;gap:20px;border-top:1px solid var(--border);padding-top:28px;}
+.principe{display:flex;gap:20px;align-items:flex-start;}
+.principe-kanji{font-family:'Noto Serif JP',serif;font-size:1.8rem;color:var(--red);width:40px;flex-shrink:0;line-height:1;}
+.principe-text strong{display:block;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px;}
+.principe-text span{font-size:13px;color:var(--muted);}
+.voie-img{height:500px;background:url('https://images.unsplash.com/photo-1555597673-b21d5c935865?w=700&q=80')center/cover;position:relative;}
+.voie-img::after{content:'柔能制剛';position:absolute;bottom:24px;right:24px;font-family:'Noto Serif JP',serif;font-size:1.2rem;color:rgba(255,255,255,0.6);background:rgba(26,20,16,0.6);padding:8px 14px;letter-spacing:4px;}
+
+.disciplines{padding:80px 56px;background:var(--ink);position:relative;z-index:1;}
+.disciplines .s-title{color:#fff;}
+.disc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px;}
+.disc{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);padding:40px 28px;position:relative;overflow:hidden;transition:background .3s;}
+.disc:hover{background:rgba(192,57,43,0.1);}
+.disc-kanji{font-family:'Noto Serif JP',serif;font-size:4rem;color:rgba(255,255,255,0.05);position:absolute;top:16px;right:16px;line-height:1;}
+.disc-name{font-size:1.3rem;font-style:italic;color:#fff;margin-bottom:8px;position:relative;}
+.disc-jp{font-family:'Noto Serif JP',serif;font-size:0.9rem;color:var(--red);margin-bottom:14px;letter-spacing:3px;}
+.disc-desc{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.8;}
+
+.contact{padding:80px 56px;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+.contact h2{font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--ink);margin-bottom:20px;}
+.contact h2 em{font-style:italic;color:var(--red);}
+.contact-desc{font-size:15px;color:var(--muted);line-height:2;margin-bottom:28px;}
+.contact-infos{display:flex;flex-direction:column;gap:16px;}
+.c-item{display:flex;gap:12px;font-size:15px;color:var(--ink);padding-bottom:16px;border-bottom:1px solid var(--border);}
+.c-item:last-child{border-bottom:none;}
+.form-g{margin-bottom:18px;}
+.form-g label{display:block;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+.form-g input,.form-g select,.form-g textarea{width:100%;background:none;border:none;border-bottom:1px solid var(--border);color:var(--ink);padding:10px 0;font-family:'Cormorant Garamond',serif;font-size:15px;outline:none;transition:border-color .2s;}
+.form-g input:focus,.form-g textarea:focus{border-color:var(--red);}
+.form-g textarea{min-height:80px;resize:none;}
+.btn-sub{width:100%;background:var(--red);color:#fff;border:none;padding:16px;font-size:13px;font-style:italic;letter-spacing:2px;cursor:pointer;font-family:'Cormorant Garamond',serif;transition:background .2s;}
+.btn-sub:hover{background:var(--red2);}
+
+footer{background:var(--ink);padding:40px 56px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;}
+.f-logo{font-size:1rem;font-style:italic;color:rgba(255,255,255,0.7);}
+.f-logo span{font-family:'Noto Serif JP',serif;color:var(--red);font-style:normal;margin-right:8px;}
+.f-copy{font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:1px;}
+.f-myrkr{font-size:11px;color:rgba(255,255,255,0.2);text-decoration:none;}
+.f-myrkr span{color:var(--red);}
+
+@media(max-width:900px){nav{padding:0 20px;}.nav-links{display:none;}.hero,.voie,.contact{grid-template-columns:1fr;}.hero-right,.hero-left{}.hero-left{align-items:flex-start;padding:100px 24px 60px;}.hero-big-kanji,.hero-title,.hero-subtitle,.hero-desc{text-align:left;}.hero-btns{justify-content:flex-start;}.hero-line{margin-left:0;}.hero-right{height:50vh;}.voie,.disciplines,.contact{padding:60px 24px;}.disc-grid{grid-template-columns:1fr;}footer{padding:28px 24px;flex-direction:column;gap:12px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="#">
+    <span class="nav-kanji">柔</span>
+    <div class="nav-text">Judo Club <span>Coarraze-Nay</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#voie">La Voie</a></li>
+    <li><a href="#disciplines">Disciplines</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta">始める — Commencer</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-big-kanji">柔道</div>
+    <h1 class="hero-title">La voie<br>de la <em>souplesse</em></h1>
+    <p class="hero-subtitle">柔道 · 柔術 · Coarraze-Nay · 64</p>
+    <div class="hero-line"></div>
+    <p class="hero-desc">Fondé sur les principes du Jigoro Kano, notre club perpétue la tradition du judo et du ju-jitsu dans le respect des valeurs de l'art martial japonais.</p>
+    <div class="hero-btns">
+      <button class="btn-red">Nous rejoindre</button>
+      <button class="btn-ghost">Découvrir le club</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img"></div>
+    <div class="hero-seal">柔</div>
+  </div>
+</section>
+
+<section class="voie" id="voie">
+  <div class="voie-content">
+    <div class="s-kanji">道</div>
+    <p class="s-eyebrow">La philosophie</p>
+    <h2 class="s-title">La <em>voie</em> du judo</h2>
+    <p class="s-desc">Le judo n'est pas qu'un sport. C'est une philosophie de vie fondée sur le respect mutuel et le meilleur usage de l'énergie.</p>
+    <ul class="voie-principes">
+      <li class="principe"><span class="principe-kanji">柔</span><div class="principe-text"><strong>Jū — La souplesse</strong><span>La douceur triomphe de la force. Céder pour mieux vaincre.</span></div></li>
+      <li class="principe"><span class="principe-kanji">道</span><div class="principe-text"><strong>Dō — La voie</strong><span>Le judo est un chemin de vie, pas une simple technique.</span></div></li>
+      <li class="principe"><span class="principe-kanji">礼</span><div class="principe-text"><strong>Rei — Le respect</strong><span>Le salut ouvre et ferme chaque combat. Le respect est absolu.</span></div></li>
+    </ul>
+  </div>
+  <div class="voie-img"></div>
+</section>
+
+<section class="disciplines" id="disciplines">
+  <p class="s-eyebrow" style="color:rgba(192,57,43,0.8)">Ce que nous pratiquons</p>
+  <h2 class="s-title">Nos <em>disciplines</em></h2>
+  <div class="disc-grid">
+    <div class="disc"><div class="disc-kanji">道</div><div class="disc-name">Judo</div><div class="disc-jp">柔道</div><div class="disc-desc">Art martial olympique. Projections, immobilisations, étranglements et clés. Dès 4 ans.</div></div>
+    <div class="disc"><div class="disc-kanji">術</div><div class="disc-name">Ju-Jitsu</div><div class="disc-jp">柔術</div><div class="disc-desc">L'art originel dont le judo est né. Technique pure, tradition vivante.</div></div>
+    <div class="disc"><div class="disc-kanji">身</div><div class="disc-name">Self-Défense</div><div class="disc-jp">護身術</div><div class="disc-desc">Application pratique des techniques. Défense personnelle adaptée au quotidien.</div></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div>
+    <h2>Rejoindre<br>la <em>voie</em></h2>
+    <p class="contact-desc">Premier cours d'essai gratuit. Le dojo vous accueille avec respect.</p>
+    <div class="contact-infos">
+      <div class="c-item">📍 Dojo municipal — Coarraze 64800</div>
+      <div class="c-item">📞 05 59 XX XX XX</div>
+      <div class="c-item">⏰ Lun / Mer / Ven · 18h – 21h</div>
+    </div>
+  </div>
+  <div>
+    <div class="form-g"><label>Nom</label><input type="text" placeholder="Prénom Nom"></div>
+    <div class="form-g"><label>Email</label><input type="email" placeholder="votre@email.fr"></div>
+    <div class="form-g"><label>Discipline</label><select><option>Judo</option><option>Ju-Jitsu</option><option>Self-Défense</option></select></div>
+    <div class="form-g"><label>Message</label><textarea placeholder="Votre message…"></textarea></div>
+    <button class="btn-sub">Envoyer — 送る</button>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo"><span>柔道</span>Judo Club Coarraze-Nay</div>
+  <div class="f-copy">© 2025 · 礼 · Affilié FFJDA</div>
+  <a class="f-myrkr" href="#">Site par <span>Myrkr</span></a>
+</footer>
+</body>
+</html>
