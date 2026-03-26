@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Judo Club Coarraze-Nay — Affilié FFJDA</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#003189;
+  --navy2:#002070;
+  --navy3:#001555;
+  --red:#E30613;
+  --red2:#c00510;
+  --white:#ffffff;
+  --off:#f4f6fb;
+  --light:#e8edf7;
+  --muted:#6b7a99;
+  --border:rgba(0,49,137,0.12);
+  --gold:#c8a028;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--white);color:var(--navy);font-family:'Open Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+
+/* ========= ÉCRAN BIENVENUE ========= */
+#welcome-screen{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--navy3);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:opacity .8s ease, visibility .8s ease;
+}
+#welcome-screen.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+.welcome-emblem{
+  width:80px;height:80px;border-radius:50%;
+  background:var(--red);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.4rem;
+  margin-bottom:32px;
+  animation:pulse-emblem 1.5s ease-in-out infinite;
+}
+@keyframes pulse-emblem{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.welcome-texts{overflow:hidden;height:56px;margin-bottom:28px;}
+.welcome-word{
+  font-family:'Oswald',sans-serif;
+  font-size:clamp(2.5rem,6vw,4.5rem);
+  font-weight:700;
+  letter-spacing:8px;
+  text-transform:uppercase;
+  color:var(--white);
+  display:block;
+  animation:slide-words 3s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes slide-words{
+  0%{transform:translateY(100%);opacity:0}
+  15%{transform:translateY(0);opacity:1}
+  75%{transform:translateY(0);opacity:1}
+  100%{transform:translateY(-100%);opacity:0}
+}
+.welcome-sub{
+  font-family:'Open Sans',sans-serif;
+  font-size:13px;letter-spacing:5px;text-transform:uppercase;
+  color:rgba(255,255,255,0.4);margin-bottom:48px;
+}
+.welcome-bar{
+  width:200px;height:2px;background:rgba(255,255,255,0.1);position:relative;overflow:hidden;
+}
+.welcome-bar::after{
+  content:'';position:absolute;inset-y:0;left:0;width:0;background:var(--red);
+  animation:load-bar 2.5s ease-in-out forwards;
+}
+@keyframes load-bar{to{width:100%}}
+.welcome-affil{margin-top:32px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);}
+
+/* ========= NAV ========= */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 48px;height:68px;
+  background:rgba(0,32,112,0.97);
+  backdrop-filter:blur(12px);
+  border-bottom:3px solid var(--red);
+}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-logo-circle{width:36px;height:36px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;font-family:'Oswald',sans-serif;}
+.nav-logo-text{display:flex;flex-direction:column;}
+.nav-logo-main{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#fff;line-height:1.1;}
+.nav-logo-sub{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+.nav-links{display:flex;list-style:none;}
+.nav-links a{display:block;padding:0 14px;font-family:'Oswald',sans-serif;font-size:12px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;line-height:68px;transition:color .2s;}
+.nav-links a:hover{color:#fff;}
+.nav-actions{display:flex;gap:10px;align-items:center;}
+.nav-trouver{background:none;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.2);padding:7px 16px;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.nav-trouver:hover{border-color:#fff;color:#fff;}
+.nav-inscrit{background:var(--red);color:#fff;border:none;padding:8px 18px;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.nav-inscrit:hover{background:var(--red2);}
+
+/* ========= HERO VIDEO ========= */
+.hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:flex-end;}
+.hero-video-wrap{position:absolute;inset:0;z-index:0;}
+.hero-video-wrap iframe{
+  position:absolute;top:50%;left:50%;
+  width:178vh;height:100vh;
+  min-width:100vw;min-height:56.25vw;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,20,80,0.95) 0%,rgba(0,32,112,0.7) 40%,rgba(0,20,80,0.4) 80%);z-index:1;}
+.hero-overlay::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.2);}
+.hero-content{position:relative;z-index:2;padding:0 56px 72px;width:100%;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;padding:5px 14px;font-family:'Oswald',sans-serif;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.6);animation:blink 1.5s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-title{font-family:'Oswald',sans-serif;font-size:clamp(3rem,7vw,7.5rem);font-weight:700;text-transform:uppercase;color:#fff;line-height:.9;letter-spacing:2px;margin-bottom:8px;}
+.hero-title .red{color:var(--red);}
+.hero-subtitle{font-family:'Oswald',sans-serif;font-size:1.3rem;font-weight:300;letter-spacing:6px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:32px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-red{background:var(--red);color:#fff;padding:13px 32px;border:none;font-family:'Oswald',sans-serif;font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.btn-red:hover{background:var(--red2);}
+.btn-white{background:none;color:#fff;padding:13px 32px;border:2px solid rgba(255,255,255,0.4);font-family:'Oswald',sans-serif;font-size:13px;font-weight:400;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:border-color .2s;}
+.btn-white:hover{border-color:#fff;}
+.hero-scroll{position:absolute;bottom:28px;right:56px;z-index:2;display:flex;align-items:center;gap:8px;font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+.hero-scroll::after{content:'';display:block;width:1px;height:32px;background:rgba(255,255,255,0.2);animation:scroll-line 1.5s ease-in-out infinite;}
+@keyframes scroll-line{0%,100%{height:32px;opacity:.4}50%{height:48px;opacity:.8}}
+
+/* ========= BANDE STATS ========= */
+.stats-band{background:var(--navy);padding:20px 56px;display:flex;justify-content:space-around;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06);}
+.stat-item{text-align:center;}
+.stat-num{font-family:'Oswald',sans-serif;font-size:2rem;font-weight:700;color:#fff;line-height:1;}
+.stat-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px;}
+
+/* ========= ACTU TICKER ========= */
+.ticker{background:var(--red);padding:10px 0;overflow:hidden;display:flex;align-items:center;gap:0;}
+.ticker-label{background:var(--navy3);color:#fff;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:0 20px;height:36px;display:flex;align-items:center;flex-shrink:0;z-index:1;}
+.ticker-track{display:flex;gap:48px;animation:ticker-move 25s linear infinite;white-space:nowrap;}
+.ticker-item{font-family:'Oswald',sans-serif;font-size:13px;font-weight:400;letter-spacing:1px;text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:16px;}
+.ticker-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.5);flex-shrink:0;}
+@keyframes ticker-move{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ========= ACTUALITÉS ========= */
+.actus{padding:72px 56px;background:var(--off);}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;}
+.section-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:6px;}
+.section-title{font-family:'Oswald',sans-serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:600;text-transform:uppercase;color:var(--navy);letter-spacing:1px;line-height:1;}
+.section-link{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--red);text-decoration:none;display:flex;align-items:center;gap:8px;transition:gap .2s;}
+.section-link:hover{gap:14px;}
+.actus-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2px;}
+.actu-card{background:#fff;overflow:hidden;cursor:pointer;transition:transform .3s;}
+.actu-card:hover{transform:translateY(-3px);}
+.actu-img{height:220px;background:url('https://images.unsplash.com/photo-1555597673-b21d5c935865?w=700&q=80')center/cover;position:relative;}
+.actu-card:nth-child(2) .actu-img{background-image:url('https://images.unsplash.com/photo-1590874315270-5c5f12e95f8a?w=500&q=80');}
+.actu-card:nth-child(3) .actu-img{background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80');}
+.actu-card:first-child .actu-img{height:300px;}
+.actu-cat{position:absolute;top:14px;left:14px;background:var(--red);color:#fff;font-family:'Oswald',sans-serif;font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;}
+.actu-body{padding:16px 20px 20px;}
+.actu-date{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.actu-title{font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:500;color:var(--navy);line-height:1.3;}
+.actu-card:first-child .actu-title{font-size:1.3rem;}
+
+/* ========= DISCIPLINES ========= */
+.disciplines{padding:72px 56px;background:var(--navy);}
+.disciplines .section-eyebrow{color:rgba(255,255,255,0.5);}
+.disciplines .section-title{color:#fff;}
+.disc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:40px;}
+.disc{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);padding:40px 28px;transition:background .3s;cursor:pointer;position:relative;overflow:hidden;}
+.disc:hover{background:rgba(227,6,19,0.12);}
+.disc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transition:transform .3s;}
+.disc:hover::after{transform:scaleX(1);}
+.disc-icon{font-size:2rem;margin-bottom:16px;display:block;}
+.disc-name{font-family:'Oswald',sans-serif;font-size:1.3rem;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:#fff;margin-bottom:8px;}
+.disc-jp{font-size:11px;letter-spacing:3px;color:rgba(255,255,255,0.25);margin-bottom:14px;}
+.disc-desc{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.7;}
+
+/* ========= ÉVÉNEMENTS ========= */
+.events{padding:72px 56px;background:var(--white);}
+.events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
+.event-card{border:1px solid var(--border);padding:28px 24px;display:flex;gap:20px;transition:border-color .3s;cursor:pointer;}
+.event-card:hover{border-color:var(--red);}
+.event-date{flex-shrink:0;width:56px;text-align:center;}
+.event-day{font-family:'Oswald',sans-serif;font-size:2rem;font-weight:700;color:var(--red);line-height:1;}
+.event-month{font-family:'Oswald',sans-serif;font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.event-info{}
+.event-type{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:5px;}
+.event-title{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:500;color:var(--navy);text-transform:uppercase;letter-spacing:1px;line-height:1.2;margin-bottom:6px;}
+.event-lieu{font-size:11px;color:var(--muted);}
+
+/* ========= REJOINDRE ========= */
+.rejoindre{padding:80px 56px;background:var(--red);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.rejoindre h2{font-family:'Oswald',sans-serif;font-size:clamp(2rem,4vw,4rem);font-weight:700;text-transform:uppercase;color:#fff;line-height:.95;letter-spacing:2px;margin-bottom:20px;}
+.rejoindre-desc{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.9;margin-bottom:28px;}
+.rejoindre-btns{display:flex;gap:12px;}
+.btn-white-solid{background:#fff;color:var(--red);padding:14px 32px;border:none;font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.btn-white-solid:hover{background:#f0f0f0;}
+.btn-white-outline{background:none;color:#fff;padding:14px 32px;border:2px solid rgba(255,255,255,0.5);font-family:'Oswald',sans-serif;font-size:13px;font-weight:400;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:border-color .2s;}
+.btn-white-outline:hover{border-color:#fff;}
+.rejoindre-form{background:rgba(255,255,255,0.1);padding:36px;}
+.form-title{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#fff;margin-bottom:20px;}
+.form-g{margin-bottom:14px;}
+.form-g label{display:block;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px;}
+.form-g input,.form-g select,.form-g textarea{width:100%;background:rgba(255,255,255,0.08);border:none;border-bottom:1px solid rgba(255,255,255,0.2);color:#fff;padding:10px 0;font-family:'Open Sans',sans-serif;font-size:14px;outline:none;transition:border-color .2s;}
+.form-g input::placeholder,.form-g textarea::placeholder{color:rgba(255,255,255,0.3);}
+.form-g input:focus,.form-g textarea:focus{border-color:#fff;}
+.form-g select option{background:var(--red2);}
+.form-g textarea{min-height:70px;resize:none;}
+.btn-sub-navy{width:100%;background:var(--navy);color:#fff;border:none;padding:14px;font-family:'Oswald',sans-serif;font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.btn-sub-navy:hover{background:var(--navy2);}
+
+/* ========= PARTENAIRES ========= */
+.partners{padding:40px 56px;background:var(--navy3);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.partners-label{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.3);flex-shrink:0;}
+.partners-logos{display:flex;gap:32px;align-items:center;flex-wrap:wrap;}
+.partner-pill{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.4);font-size:11px;font-family:'Oswald',sans-serif;letter-spacing:2px;text-transform:uppercase;padding:7px 16px;border:1px solid rgba(255,255,255,0.08);}
+
+footer{background:var(--navy3);border-top:1px solid rgba(255,255,255,0.06);padding:40px 56px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;}
+.footer-brand .nav-logo-main{font-size:1.1rem;}
+.footer-brand .nav-logo-sub{font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);}
+.footer-tagline{font-size:12px;color:rgba(255,255,255,0.3);line-height:1.7;margin-top:10px;}
+.footer-col h4{font-family:'Oswald',sans-serif;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:14px;}
+.footer-col a{display:block;font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;margin-bottom:9px;transition:color .2s;}
+.footer-col a:hover{color:rgba(255,255,255,0.7);}
+.footer-bottom{background:var(--navy3);border-top:1px solid rgba(255,255,255,0.05);padding:16px 56px;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:1px;}
+.footer-myrkr{font-size:11px;color:rgba(255,255,255,0.2);text-decoration:none;}
+.footer-myrkr span{color:rgba(227,6,19,0.6);}
+
+@media(max-width:1000px){
+  nav{padding:0 20px;}.nav-links{display:none;}
+  .hero-content{padding:0 24px 64px;}
+  .stats-band,.ticker,.actus,.disciplines,.events,.rejoindre,.partners,footer,.footer-bottom{padding-left:24px;padding-right:24px;}
+  .actus-grid{grid-template-columns:1fr;}
+  .disc-grid{grid-template-columns:1fr 1fr;}
+  .events-grid{grid-template-columns:1fr;}
+  .rejoindre{grid-template-columns:1fr;gap:40px;}
+  footer{grid-template-columns:1fr 1fr;gap:28px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ÉCRAN BIENVENUE -->
+<div id="welcome-screen">
+  <div class="welcome-emblem">🥋</div>
+  <div class="welcome-texts">
+    <span class="welcome-word">Bienvenue</span>
+  </div>
+  <p class="welcome-sub">Judo Club Coarraze-Nay · Depuis 1972</p>
+  <div class="welcome-bar"></div>
+  <p class="welcome-affil">Affilié F.F.J.D.A · Pyrénées-Atlantiques · 64</p>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-circle">JC</div>
+    <div class="nav-logo-text">
+      <span class="nav-logo-main">Judo Club Coarraze-Nay</span>
+      <span class="nav-logo-sub">Judo · Ju-Jitsu · Self-Défense</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#actus">Actualités</a></li>
+    <li><a href="#disciplines">Disciplines</a></li>
+    <li><a href="#events">Agenda</a></li>
+    <li><a href="#rejoindre">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="nav-trouver">Horaires</button>
+    <button class="nav-inscrit">S'inscrire</button>
+  </div>
+</nav>
+
+<!-- HERO VIDÉO -->
+<section class="hero">
+  <div class="hero-video-wrap">
+    <iframe
+      src="https://www.youtube.com/embed/wv1z2fw7-QA?autoplay=1&mute=1&loop=1&playlist=wv1z2fw7-QA&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&disablekb=1&enablejsapi=1"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+      frameborder="0"
+    ></iframe>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Club affilié FFJDA · Coarraze-Nay · 64800</div>
+    <h1 class="hero-title">Judo Club<br><span class="red">Coarraze-Nay</span></h1>
+    <p class="hero-subtitle">Judo · Ju-Jitsu · Self-Défense</p>
+    <div class="hero-btns">
+      <button class="btn-red" onclick="document.getElementById('rejoindre').scrollIntoView({behavior:'smooth'})">Nous rejoindre</button>
+      <button class="btn-white" onclick="document.getElementById('disciplines').scrollIntoView({behavior:'smooth'})">Découvrir le club</button>
+    </div>
+  </div>
+  <div class="hero-scroll">Défiler</div>
+</section>
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="stat-item"><div class="stat-num">50+</div><div class="stat-label">Ans d'histoire</div></div>
+  <div class="stat-item"><div class="stat-num">200+</div><div class="stat-label">Licenciés</div></div>
+  <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Disciplines</div></div>
+  <div class="stat-item"><div class="stat-num">4+</div><div class="stat-label">Ceintures noires</div></div>
+  <div class="stat-item"><div class="stat-num">1972</div><div class="stat-label">Fondé en</div></div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-label">Flash info</div>
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span>Inscriptions saison 2025-2026 ouvertes</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Tournoi départemental — 15 Novembre · Pau</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Stages vacances Toussaint — Infos en contact</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Premier cours gratuit pour les nouveaux</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Inscriptions saison 2025-2026 ouvertes</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Tournoi départemental — 15 Novembre · Pau</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Stages vacances Toussaint — Infos en contact</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Premier cours gratuit pour les nouveaux</span>
+  </div>
+</div>
+
+<!-- ACTUALITÉS -->
+<section class="actus" id="actus">
+  <div class="section-head">
+    <div>
+      <p class="section-eyebrow">Vie du club</p>
+      <h2 class="section-title">Actualités</h2>
+    </div>
+    <a class="section-link" href="#">Toutes les actus →</a>
+  </div>
+  <div class="actus-grid">
+    <div class="actu-card">
+      <div class="actu-img"><span class="actu-cat">Compétition</span></div>
+      <div class="actu-body">
+        <div class="actu-date">15 Octobre 2025</div>
+        <div class="actu-title">Nos judokas brillent au championnat départemental des Pyrénées-Atlantiques — 3 médailles à la clé</div>
+      </div>
+    </div>
+    <div class="actu-card">
+      <div class="actu-img"><span class="actu-cat">Club</span></div>
+      <div class="actu-body">
+        <div class="actu-date">1 Septembre 2025</div>
+        <div class="actu-title">Rentrée 2025 — Les inscriptions sont ouvertes pour toutes les disciplines</div>
+      </div>
+    </div>
+    <div class="actu-card">
+      <div class="actu-img"><span class="actu-cat">Formation</span></div>
+      <div class="actu-body">
+        <div class="actu-date">20 Août 2025</div>
+        <div class="actu-title">Stage estival — Retour sur une semaine de pratique intensive</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCIPLINES -->
+<section class="disciplines" id="disciplines">
+  <p class="section-eyebrow">Ce que nous pratiquons</p>
+  <h2 class="section-title" style="color:#fff">Nos disciplines</h2>
+  <div class="disc-grid">
+    <div class="disc"><span class="disc-icon">🥋</span><div class="disc-name">Judo</div><div class="disc-jp">柔道 · JŪDŌ</div><div class="disc-desc">Art martial olympique fondé par Jigoro Kano. Dès 4 ans, loisir et compétition.</div></div>
+    <div class="disc"><span class="disc-icon">🤼</span><div class="disc-name">Ju-Jitsu</div><div class="disc-jp">柔術 · JŪJUTSU</div><div class="disc-desc">L'art originel. Clés, projections, étranglements. Adultes et adolescents.</div></div>
+    <div class="disc"><span class="disc-icon">🛡️</span><div class="disc-name">Self-Défense</div><div class="disc-jp">護身術 · GOSHINJUTSU</div><div class="disc-desc">Techniques pratiques de défense personnelle. Tous niveaux, tous publics.</div></div>
+    <div class="disc"><span class="disc-icon">🏆</span><div class="disc-name">Compétition</div><div class="disc-jp">試合 · SHIAI</div><div class="disc-desc">Accompagnement vers la compétition. Département, région, nationale.</div></div>
+  </div>
+</section>
+
+<!-- ÉVÉNEMENTS -->
+<section class="events" id="events">
+  <div class="section-head">
+    <div>
+      <p class="section-eyebrow">Agenda sportif</p>
+      <h2 class="section-title">Prochains événements</h2>
+    </div>
+    <a class="section-link" href="#">Tout l'agenda →</a>
+  </div>
+  <div class="events-grid">
+    <div class="event-card">
+      <div class="event-date"><div class="event-day">15</div><div class="event-month">Nov</div></div>
+      <div class="event-info"><div class="event-type">Compétition</div><div class="event-title">Tournoi Départemental 64</div><div class="event-lieu">📍 Dojo Municipal · Pau</div></div>
+    </div>
+    <div class="event-card">
+      <div class="event-date"><div class="event-day">22</div><div class="event-month">Nov</div></div>
+      <div class="event-info"><div class="event-type">Interne</div><div class="event-title">Passage de grades — Ceinture jaune & orange</div><div class="event-lieu">📍 Dojo Coarraze</div></div>
+    </div>
+    <div class="event-card">
+      <div class="event-date"><div class="event-day">06</div><div class="event-month">Déc</div></div>
+      <div class="event-info"><div class="event-type">Compétition</div><div class="event-title">Championnat de Ligue Nouvelle-Aquitaine</div><div class="event-lieu">📍 Bordeaux</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REJOINDRE -->
+<section class="rejoindre" id="rejoindre">
+  <div>
+    <h2>Rejoindre<br>le dojo</h2>
+    <p class="rejoindre-desc">Premier cours d'essai gratuit pour toutes les disciplines. Venez avec une tenue de sport — les kimono sont disponibles pour l'essai.</p>
+    <div style="margin-bottom:24px;display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;gap:12px;align-items:center;color:rgba(255,255,255,0.7);font-size:14px;">📍 Dojo municipal — Coarraze 64800</div>
+      <div style="display:flex;gap:12px;align-items:center;color:rgba(255,255,255,0.7);font-size:14px;">📞 05 59 XX XX XX</div>
+      <div style="display:flex;gap:12px;align-items:center;color:rgba(255,255,255,0.7);font-size:14px;">⏰ Lun · Mer · Ven 18h–21h · Sam 10h–12h</div>
+    </div>
+    <div class="rejoindre-btns">
+      <button class="btn-white-solid">Télécharger le dossier</button>
+      <button class="btn-white-outline">Nous appeler</button>
+    </div>
+  </div>
+  <div class="rejoindre-form">
+    <div class="form-title">Demande d'information</div>
+    <div class="form-g"><label>Nom complet</label><input type="text" placeholder="Prénom Nom"></div>
+    <div class="form-g"><label>Email</label><input type="email" placeholder="votre@email.fr"></div>
+    <div class="form-g"><label>Discipline souhaitée</label><select><option>Judo</option><option>Ju-Jitsu</option><option>Self-Défense</option><option>Je ne sais pas encore</option></select></div>
+    <div class="form-g"><label>Message</label><textarea placeholder="Votre question…"></textarea></div>
+    <button class="btn-sub-navy">Envoyer la demande</button>
+  </div>
+</section>
+
+<!-- PARTENAIRES -->
+<div class="partners">
+  <span class="partners-label">Affiliations & partenaires</span>
+  <div class="partners-logos">
+    <span class="partner-pill">F.F.J.D.A</span>
+    <span class="partner-pill">Ligue N. Aquitaine</span>
+    <span class="partner-pill">Comité 64</span>
+    <span class="partner-pill">Mairie Coarraze</span>
+    <span class="partner-pill">C.A. Pyrénées-Atl.</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <div class="nav-logo-circle">JC</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-main" style="font-size:.9rem;">Judo Club Coarraze-Nay</span>
+        <span class="nav-logo-sub">Affilié FFJDA</span>
+      </div>
+    </div>
+    <p class="footer-tagline">Dojo municipal de Coarraze<br>64800 Coarraze-Nay<br>Pyrénées-Atlantiques</p>
+  </div>
+  <div class="footer-col">
+    <h4>Le club</h4>
+    <a href="#">Histoire du club</a>
+    <a href="#">L'équipe encadrante</a>
+    <a href="#">Palmarès</a>
+    <a href="#">Galerie photos</a>
+  </div>
+  <div class="footer-col">
+    <h4>Disciplines</h4>
+    <a href="#">Judo</a>
+    <a href="#">Ju-Jitsu</a>
+    <a href="#">Self-Défense</a>
+    <a href="#">Baby Judo</a>
+  </div>
+  <div class="footer-col">
+    <h4>Infos pratiques</h4>
+    <a href="#">Horaires & planning</a>
+    <a href="#">Tarifs & inscription</a>
+    <a href="#">Contact</a>
+    <a href="#">Accès au dojo</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span class="footer-copy">© 2025 Judo Club Coarraze-Nay · Affilié F.F.J.D.A.</span>
+  <a class="footer-myrkr" href="#">Site créé par <span>Myrkr</span></a>
+</div>
+
+<script>
+// Écran bienvenue
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('welcome-screen').classList.add('hidden');
+  }, 3000);
+});
+</script>
+</body>
+</html>
